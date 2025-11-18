@@ -10,22 +10,28 @@
  * };
  */
 class Solution {
-  public:
-  
-    void Rview(TreeNode*root , int level , vector<int>&ans){
-        if(root==NULL){
-        return;
-     }
-        if(level==ans.size()){
-         ans.push_back(root->val);
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+        if (!root) return ans;
+
+        queue<TreeNode*> qt;
+        qt.push(root);
+
+        while (!qt.empty()) {
+            int size = qt.size();
+
+            ans.push_back(qt.back()->val);
+
+            while (size--) {
+                TreeNode* temp = qt.front();
+                qt.pop();
+
+                if (temp->left)  qt.push(temp->left);
+                if (temp->right) qt.push(temp->right);
+            }
         }
-  Rview(root->right , level+1 , ans);
-  Rview(root->left , level+1 , ans);
-  }
-    vector<int> rightSideView(TreeNode *root) {
-        int level=0;
-        vector<int>ans;
-        Rview(root , level , ans);
+
         return ans;
-     }
+    }
 };
