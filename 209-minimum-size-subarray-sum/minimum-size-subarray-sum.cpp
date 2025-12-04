@@ -20,6 +20,11 @@ public:
             end++;
         }
         }
-        return (minSize==INT_MAX)?0: minSize;
+        if(minSize==INT_MAX){
+            return 0;
+        }
+        else{
+            return minSize;
+        }
     }
 };
