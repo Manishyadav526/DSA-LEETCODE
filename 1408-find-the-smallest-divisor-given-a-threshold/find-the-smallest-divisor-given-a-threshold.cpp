@@ -7,20 +7,24 @@ public:
         }
         return m;
     }
+
+    long long SumofD(vector<int>& nums,int mid){
+        long long sum=0;
+        for(int i=0;i<nums.size();i++){
+            sum+=ceil(double(nums[i])/double(mid));
+        }
+        return sum;
+    };
     int smallestDivisor(vector<int>& nums, int threshold) {
-        int m = maxi(nums);
-        int low = 1, high = m,mid;
+        int low = 1; 
+        int high = maxi(nums);
         while(low<=high){
-            int sum = 0;
-            mid = (low+high)/2;
-            for(int i =0;i<nums.size();i++){
-                sum = sum + ((nums[i]+mid-1)/mid);
-            }
-            if(sum<=threshold) {
-                high = mid-1;
+            int mid = low+(high-low)/2;
+            if(SumofD(nums , mid)<=threshold){
+                high=mid-1;
             }
             else{
-                low = mid+1;
+                low=mid+1;
             }
         }
         return low;
