@@ -13,6 +13,10 @@ public:
                 high = mid - 1;
             }
         }
-        return low + k;
+            if (high < 0) {
+            return k;
+        }    
+    int missingTillHigh = arr[high] - (high + 1);
+    return arr[high] + (k - missingTillHigh);
     }
 };
