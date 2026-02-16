@@ -3,19 +3,18 @@ public:
     bool check(vector<int>& nums) {
         int count=0;
         int n=nums.size();
-        for(int i=1;i<n;i++){
-            if(nums[i]>=nums[i-1]){
-                continue;
-            }
-            else{
-                count++;
-            }
-        }
-        if(count>0){ //for checking the first and last element (if the complete array is not sorted)
-            if(nums[n-1]>nums[0]){
+        if(nums[0]<nums[n-1]){
             count++;
         }
+        for(int i=0;i<n-1;i++){
+            if(nums[i]>nums[i+1]){
+                count++;
+            }
+            
         }
-        return (count<=1)? true: false;
+        if(count<=1){
+            return true;
+        }
+        return false;
     }
-};
+    };
