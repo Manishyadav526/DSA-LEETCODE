@@ -13,30 +13,25 @@ public:
 };
 */
 class Solution {
-public:
+  public:
+  
+  void LView(Node*root , int level , vector<int>&ans){
+      if(root==NULL){
+          return;
+  }
+  if(level==ans.size()){
+      ans.push_back(root->data);
+  }
+  LView(root->left , level+1 , ans);
+  LView(root->right , level+1 , ans);
+  
+  }
     vector<int> leftView(Node *root) {
+        //  code here
+        int level=0;
         vector<int>ans;
-        if(root==NULL){
-            return ans;
-        }
-        queue<Node*>q;
-        q.push(root);
-        while(!q.empty()){
-            Node*temp=q.front();
-            int n=q.size();
-            ans.push_back(temp->data);
-            while(n--){
-                Node*temp=q.front();
-                q.pop();
-                if(temp->left){
-                   q.push(temp->left); 
-                }
-                if(temp->right){
-                    q.push(temp->right);
-                }
-                
-            }
-        }
+        LView(root , level , ans);
         return ans;
+        
     }
 };
