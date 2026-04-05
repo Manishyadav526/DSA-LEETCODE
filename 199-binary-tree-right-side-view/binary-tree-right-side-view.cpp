@@ -18,14 +18,15 @@ public:
         qt.push(root);
         while(!qt.empty()){
             int size=qt.size();
-            ////int i=0; for left side view
+            //int i=0; for left side view
+            //int n=size;
             while(size--){
             TreeNode* temp=qt.front();
             qt.pop();
+            //i++;
             if(size==0){
             ans.push_back(temp->val); //it push only last node of each level
             }
-            ////i++; for left side view
             if(temp->left){
                 qt.push(temp->left);
             }
