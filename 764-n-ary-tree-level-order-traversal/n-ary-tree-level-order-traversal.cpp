@@ -34,9 +34,13 @@ public:
                 Node*temp=q.front();
                 q.pop();
                 level.push_back(temp->val);
-                for (auto child : temp->children){
-                    q.push(child);
-                }
+                // for (auto child : temp->children){
+                //     q.push(child);
+                // }
+                for (int i = 0; i < temp->children.size(); i++) {
+                Node* child = temp->children[i];
+                 q.push(child);
+                }   
             }
             ans.push_back(level);
         }
