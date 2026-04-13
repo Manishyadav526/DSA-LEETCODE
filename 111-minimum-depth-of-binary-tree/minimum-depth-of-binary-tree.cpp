@@ -15,15 +15,13 @@ public:
       if(!root){
         return 0;
       }
-      if(!root->left){
+      if(!root->left && root->right){
         return 1 + minDepth(root->right);
       }
-      if(!root->right){
+      if(!root->right && root->left){
         return 1+ minDepth(root->left);
       }
-      int lh=minDepth(root->left);
-      int rh=minDepth(root->right);
-
-      return 1+min(lh,rh);
+    
+    return 1+min(minDepth(root->left),minDepth(root->right));
     }
 };
