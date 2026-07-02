@@ -7,4 +7,3 @@ WHERE id IN (
     HAVING COUNT(*) >= 5
 )
 
--- Low performance. Why? Read below.
