@@ -32,8 +32,8 @@ public:
         int l = 0, r = 0;
         find(root, 0, l, r);
 
-        vector<int> ans(r - l + 1);
-        vector<bool> filled(r - l + 1, 0);
+        vector<int> ans(r - l + 1,0);
+        //vector<bool> filled(r - l + 1, 0);
 
         queue<Node*> q;
         queue<int> index;
@@ -49,8 +49,7 @@ public:
             int pos = index.front();
             index.pop();
 
-            if(!filled[pos]) {
-                filled[pos] = 1;
+            if(ans[pos]==0) {
                 ans[pos] = temp->data;
             }
 
