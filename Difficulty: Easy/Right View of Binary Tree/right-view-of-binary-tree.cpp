@@ -1,4 +1,5 @@
 /*
+Definition for Node
 class Node {
   public:
     int data;
@@ -7,37 +8,37 @@ class Node {
 
     Node(int val) {
         data = val;
-        left = nullptr;
-        right = nullptr;
+        left = right = nullptr;
     }
 };
 */
 
-
 class Solution {
-public:
+  public:
     vector<int> rightView(Node *root) {
+        //  code here
         vector<int>ans;
-        if(root==NULL){
-            return ans;
-        }
-        queue<Node*>q;
-        q.push(root);
-        while(!q.empty()){
-            int n=q.size();
-            while(n--){
-                Node*temp=q.front();
+         if(root==NULL){
+             return ans;
+         }
+         queue<Node*>qt;
+         qt.push(root);
+         while(!qt.empty()){
+             int n=qt.size();
+             int i=0;
+             while(n--){
+                Node*temp=qt.front();
+                qt.pop();
                 if(n==0){
-                ans.push_back(temp->data);
+                    ans.push_back(temp->data);
                 }
-                q.pop();
+                //i++;
                 if(temp->left){
-                   q.push(temp->left); 
-                }
+                    qt.push(temp->left);
+                } 
                 if(temp->right){
-                    q.push(temp->right);
-                }
-                
+                    qt.push(temp->right);
+                } 
             }
         }
         return ans;
